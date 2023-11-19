@@ -20,7 +20,7 @@ RUN rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-ADD tools/pg-backup/run.sh tools/pg-backup/backup.sh docker-entrypoint.sh ./
+COPY . .
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["sh", "run.sh"]
