@@ -1,0 +1,22 @@
+name: Build and push
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  postgres-backup:
+    runs-on: self-hosted
+    steps:
+      - uses: TooMuch4U/actions-clean@v2.1
+      - uses: actions/checkout@v3
+
+      - run: |
+          docker build -f ./tools/pg-backup/Dockerfile \
+          -t ${{ secrets.DOCKER_REGISTRY }}/twir/postgres-backup:latest \
+          --cache-from type=gha,scope=twir-postgres-backup \
+          --cache-to type=gha,mode=max,scope=twir-postgres-backup .
+
+          docker push ${{ secrets.DOCKER_REGISTRY }}/twir/postgres-backup:latest
