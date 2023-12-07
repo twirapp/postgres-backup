@@ -21,6 +21,7 @@ RUN rm -rf /var/cache/apk/*
 WORKDIR /app
 
 COPY . .
+RUN chmod +x docker-entrypoint.sh
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["sh", "run.sh"]
