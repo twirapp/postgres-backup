@@ -15,8 +15,8 @@ jobs:
 
       - run: |
           docker build -f ./Dockerfile \
-          -t ${{ secrets.DOCKER_REGISTRY }}/twir/postgres-backup:latest \
+          -t twir-postgres-backup:latest \
           --cache-from type=gha,scope=twir-postgres-backup \
           --cache-to type=gha,mode=max,scope=twir-postgres-backup .
 
-          docker push ${{ secrets.DOCKER_REGISTRY }}/twir/postgres-backup:latest
+          docker push twir-postgres-backup:latest
