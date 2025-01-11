@@ -28,6 +28,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: registry.twir.app/twirapp/${{ env.app }}:latest
+          tags: registry.twir.app/twirapp/postgres-backup:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
