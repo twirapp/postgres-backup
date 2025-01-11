@@ -3,7 +3,7 @@ FROM alpine:edge
 RUN apk update
 RUN apk add \
 	coreutils \
-	postgresql-client \
+	postgresql17-client \
 	python3 \
     py3-pip \
 	openssl \
