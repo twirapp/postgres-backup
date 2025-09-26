@@ -48,7 +48,8 @@ echo "Creating dump of ${POSTGRES_DATABASE} database from ${POSTGRES_HOST}..."
 SRC_FILE=dump.sql.gz
 DEST_FILE=${POSTGRES_DATABASE}_$(date +"%Y-%m-%dT%H:%M:%SZ").sql.gz
 
-pg_dump -h "$POSTGRES_HOST" -p "$POSTGRES_PORT" -U "$POSTGRES_USER" -d "$POSTGRES_DATABASE" | gzip > $SRC_FILE
+# direct connection, but hardcoded. Need to mind how to do that later
+pg_dump -h postgres -p 5432 -U "$POSTGRES_USER" -d "$POSTGRES_DATABASE" | gzip > $SRC_FILE
 
 echo "Uploading dump to $S3_BUCKET"
 
