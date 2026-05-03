@@ -10,8 +10,8 @@ RUN apk update && apk add --no-cache \
     aws-cli
 
 RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key' -O /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub && \
-    echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' | tee /etc/apk/repositories.d/doppler.list && \
-    apk update && apk add doppler
+    echo 'https://packages.doppler.com/public/cli/alpine/any-version/main' >> /etc/apk/repositories && \
+    apk add --no-cache doppler
 
 RUN apk del wget && rm -rf /var/cache/apk/*
 
